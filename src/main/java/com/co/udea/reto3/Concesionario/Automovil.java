@@ -15,11 +15,15 @@ public class Automovil {
     private Motor motor;
     private int anioFabricacion;
 
-    public Automovil(String placa, String marca, int modelo, int kilometraje, double precio, String descripcion, String color, Llanta[] llantas, Motor motor, int anioFabricacion) {
+    public Automovil(String placa, String marca, int modelo, int kilometraje, double precio, String descripcion, String color, Llanta[] llantas, Motor motor, int anioFabricacion) throws KilometrajeException {
+        if(kilometraje<0){
+            throw new KilometrajeException();
+        }else{
+            this.kilometraje = kilometraje;
+        }
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
-        this.kilometraje = kilometraje;
         this.precio = precio;
         this.descripcion = descripcion;
         this.color = color;

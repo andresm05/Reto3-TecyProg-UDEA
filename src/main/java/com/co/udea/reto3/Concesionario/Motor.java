@@ -17,11 +17,15 @@ public class Motor {
     private double peso;
     private String descripcion;
 
-    public Motor(double cilindraje, String marca, String referencia, double peso, String descripcion) {
+    public Motor(double cilindraje, String marca, String referencia, double peso, String descripcion) throws PesoException {
+        if (peso <= 0) {
+            throw new PesoException();
+        } else {
+            this.peso = peso;
+        }
         this.cilindraje = cilindraje;
         this.marca = marca;
         this.referencia = referencia;
-        this.peso = peso;
         this.descripcion = descripcion;
     }
 
@@ -64,6 +68,5 @@ public class Motor {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
-    
+
 }

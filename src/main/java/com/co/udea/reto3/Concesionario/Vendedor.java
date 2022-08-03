@@ -5,6 +5,8 @@
  */
 package com.co.udea.reto3.Concesionario;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author HOME
@@ -18,14 +20,23 @@ public class Vendedor {
     private double valorVendido;
     private int anioIngreso;
     private String descripcion;
+    public static final int ACTUALYEAR = LocalDate.now().getYear();
 
-    public Vendedor(String documento, String nombres, String apellidos, int edad, double valorVendido, int anioIngreso, String descripcion) {
+    public Vendedor(String documento, String nombres, String apellidos, int edad, double valorVendido, int anioIngreso, String descripcion) throws yearException, EdadException {
+        if(anioIngreso>ACTUALYEAR){
+            throw new yearException();
+        }else{
+            this.anioIngreso = anioIngreso;
+        }
+        if(edad<18){
+            throw new EdadException();
+        }else{
+             this.edad = edad;
+        }
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.edad = edad;
         this.valorVendido = valorVendido;
-        this.anioIngreso = anioIngreso;
         this.descripcion = descripcion;
     }
 

@@ -10,14 +10,19 @@ package com.co.udea.reto3.Concesionario;
  * @author HOME
  */
 public class Llanta {
+
     private String marca;
     private String referencia;
     private double peso;
 
-    public Llanta(String marca, String referencia, double peso) {
+    public Llanta(String marca, String referencia, double peso) throws PesoException {
+        if (peso <= 0) {
+            throw new PesoException();
+        } else {
+            this.peso = peso;
+        }
         this.marca = marca;
         this.referencia = referencia;
-        this.peso = peso;
     }
 
     public String getMarca() {
@@ -43,6 +48,5 @@ public class Llanta {
     public void setPeso(double peso) {
         this.peso = peso;
     }
-    
-    
+
 }
